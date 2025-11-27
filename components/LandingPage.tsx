@@ -136,9 +136,6 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
             <button onClick={() => scrollTo('features')} className="text-gray-300 hover:text-white transition">
               Features
             </button>
-            <button onClick={() => scrollTo('pricing')} className="text-gray-300 hover:text-white transition">
-              Pricing
-            </button>
             <SignInButton mode="modal">
               <button className="px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition">
                 Sign In
@@ -160,9 +157,6 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
           <div className="md:hidden bg-black/90 backdrop-blur border-t border-purple-900/20 p-4 space-y-4">
             <button onClick={() => scrollTo('features')} className="block w-full text-left text-gray-300 hover:text-white py-2">
               Features
-            </button>
-            <button onClick={() => scrollTo('pricing')} className="block w-full text-left text-gray-300 hover:text-white py-2">
-              Pricing
             </button>
             <SignInButton mode="modal">
               <button className="w-full px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition">
@@ -322,99 +316,6 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
                 {idx < 3 && (
                   <div className="hidden md:block absolute top-8 -right-4 w-8 h-1 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6]"></div>
                 )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 px-4 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Simple, Transparent <span className="text-[#5E17EB]">Pricing</span>
-            </h2>
-            <p className="text-xl text-gray-400">Choose the plan that fits your needs</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                name: 'Starter',
-                price: 'Free',
-                period: 'Forever',
-                features: ['10 prompts/day', 'Basic content types', 'Email support', 'Standard quality']
-              },
-              {
-                name: 'Pro',
-                price: '$19',
-                period: '/month',
-                priceINR: '₹1,499',
-                periodINR: '/month',
-                features: ['100 prompts/day', 'All content types', 'Priority support', 'Advanced AI models', 'Analytics dashboard', 'Team collaboration'],
-                highlighted: true
-              },
-              {
-                name: 'Enterprise',
-                price: 'Custom',
-                period: 'Contact us',
-                features: ['Unlimited prompts', 'Custom integrations', '24/7 support', 'Dedicated account manager', 'Advanced analytics']
-              }
-            ].map((plan, idx) => (
-              <div
-                key={idx}
-                className={`relative p-8 rounded-2xl transition animate-slide-up ${
-                  plan.highlighted
-                    ? 'bg-gradient-to-br from-[#5E17EB]/20 to-[#CB6CE6]/10 border-2 border-[#5E17EB] shadow-xl shadow-purple-900/30 transform scale-105'
-                    : 'bg-gradient-to-br from-purple-900/10 to-transparent border border-purple-900/20'
-                }`}
-                style={{ animationDelay: `${idx * 0.15}s` }}
-              >
-                {plan.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] rounded-full text-sm font-bold text-white animate-pulse-scale">
-                    Most Popular
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-gray-400 ml-2">{plan.period}</span>
-                  {plan.priceINR && (
-                    <>
-                      <div className="text-sm text-gray-400 mt-2">
-                        or <span className="text-2xl font-bold text-white">{plan.priceINR}</span> {plan.periodINR}
-                      </div>
-                      <div className="text-xs text-gray-500 mt-3 pt-3 border-t border-purple-900/30">
-                        <div className="inline-block px-2 py-1 bg-gradient-to-r from-[#5E17EB]/20 to-[#CB6CE6]/20 border border-[#CB6CE6]/50 rounded text-xs font-semibold text-[#CB6CE6] animate-pulse">
-                          🎉 Special Offer: $19 for 4 months (First 100 users only)
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-center gap-2 text-gray-300">
-                      <CheckCircle size={18} className="text-[#5E17EB] flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`w-full py-3 font-bold rounded-lg transition cursor-pointer ${
-                    plan.highlighted
-                      ? 'bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white hover:opacity-90'
-                      : 'border border-purple-900 text-white hover:bg-purple-900/10'
-                  }`}
-                  onClick={() => {
-                    // Trigger sign-in for all plans
-                    const signInBtn = document.querySelector('[data-signup-trigger]') as HTMLElement;
-                    signInBtn?.click();
-                  }}
-                >
-                  {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
-                </button>
               </div>
             ))}
           </div>
