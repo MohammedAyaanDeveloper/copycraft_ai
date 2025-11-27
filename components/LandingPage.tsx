@@ -283,7 +283,7 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
             ].map((feature, idx) => (
               <div
                 key={idx}
-                className={`group p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-purple-900/10 to-transparent border border-purple-900/20 rounded-lg sm:rounded-2xl hover:border-purple-900/50 hover:bg-purple-900/20 transition cursor-pointer animate-slide-up delay-${idx + 1}`}
+                className="group p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-purple-900/10 to-transparent border border-purple-900/20 rounded-lg sm:rounded-2xl hover:border-purple-900/50 hover:bg-purple-900/20 transition cursor-pointer animate-slide-up"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 <div className="inline-block p-2 sm:p-3 bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] rounded-lg mb-3 sm:mb-4 group-hover:scale-110 transition">
