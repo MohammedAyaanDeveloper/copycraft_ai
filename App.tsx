@@ -5,6 +5,7 @@ import HistorySidebar from './components/HistorySidebar';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import FAQ from './components/FAQ';
 import Terms from './components/Terms';
+import LandingPage from './components/LandingPage';
 import { GenerationParams, HistoryItem } from './types';
 import { generateCopy } from './services/geminiService';
 import { PenTool, Command, History as HistoryIcon } from 'lucide-react';
@@ -147,6 +148,11 @@ const App: React.FC = () => {
     setHistory(updatedHistory);
     localStorage.setItem('cc_history', JSON.stringify(updatedHistory));
   };
+
+  // Show landing page for signed-out users
+  if (!isSignedIn) {
+    return <LandingPage onGetStarted={() => {}} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#060312] via-[#160428] to-black flex flex-col font-sans text-gray-100">
