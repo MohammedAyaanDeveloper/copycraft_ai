@@ -120,24 +120,27 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md border-b border-purple-900/20 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="text-[#5E17EB]">
               <XommunityLogo />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] bg-clip-text text-transparent">
+            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] bg-clip-text text-transparent">
               Xommunity
             </span>
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollTo('features')} className="text-gray-300 hover:text-white transition">
+            <button onClick={() => scrollTo('features')} className="text-gray-300 hover:text-white transition text-sm lg:text-base">
               Features
             </button>
+            <button onClick={() => scrollTo('how-works')} className="text-gray-300 hover:text-white transition text-sm lg:text-base">
+              How It Works
+            </button>
             <SignInButton mode="modal">
-              <button className="px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition">
+              <button className="px-5 sm:px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition text-sm">
                 Sign In
               </button>
             </SignInButton>
@@ -154,12 +157,15 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur border-t border-purple-900/20 p-4 space-y-4">
-            <button onClick={() => scrollTo('features')} className="block w-full text-left text-gray-300 hover:text-white py-2">
+          <div className="md:hidden bg-black/90 backdrop-blur border-t border-purple-900/20 p-4 space-y-3">
+            <button onClick={() => scrollTo('features')} className="block w-full text-left text-gray-300 hover:text-white py-2 text-sm">
               Features
             </button>
+            <button onClick={() => scrollTo('how-works')} className="block w-full text-left text-gray-300 hover:text-white py-2 text-sm">
+              How It Works
+            </button>
             <SignInButton mode="modal">
-              <button className="w-full px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition">
+              <button className="w-full px-6 py-2 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-semibold rounded-lg hover:opacity-90 transition text-sm">
                 Sign In
               </button>
             </SignInButton>
@@ -173,43 +179,43 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0614] via-[#1a0a2e] to-black"></div>
         
         {/* Animated Background Orbs */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-[#5E17EB]/20 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#CB6CE6]/20 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-[#5E17EB]/20 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30"></div>
+        <div className="absolute bottom-20 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-[#CB6CE6]/20 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDelay: '1s' }}></div>
 
-        <div className="relative max-w-6xl mx-auto text-center space-y-8">
+        <div className="relative max-w-6xl mx-auto text-center space-y-6 sm:space-y-8 px-4">
           {/* Headline */}
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="inline-block animate-slide-up text-white">Create</span>
               <span className="block bg-gradient-to-r from-[#5E17EB] via-[#CB6CE6] to-[#5E17EB] bg-clip-text text-transparent animate-slide-up delay-1">
                 Professional Content
               </span>
               <span className="inline-block animate-slide-up delay-2 text-white">In Seconds</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed animate-slide-up delay-3">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed animate-slide-up delay-3">
               Powered by advanced AI, Xommunity transforms your ideas into compelling, polished content. 
               Say goodbye to writer's block and hello to unlimited creativity.
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4">
             <SignInButton mode="modal">
-              <button className="group px-8 py-4 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-bold text-lg rounded-xl shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-900/70 transform hover:-translate-y-1 transition flex items-center justify-center gap-2 cursor-pointer animate-slide-up delay-4">
+              <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-900/70 transform hover:-translate-y-1 transition flex items-center justify-center gap-2 cursor-pointer animate-slide-up delay-4">
                 Get Started Free
                 <ArrowRight className="group-hover:translate-x-1 transition" size={20} />
               </button>
             </SignInButton>
             <button
               onClick={() => scrollTo('features')}
-              className="px-8 py-4 border-2 border-purple-900 text-white font-bold text-lg rounded-xl hover:bg-purple-900/10 transition cursor-pointer animate-slide-up delay-5"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-900 text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl hover:bg-purple-900/10 transition cursor-pointer animate-slide-up delay-5"
             >
               Learn More
             </button>
           </div>
 
           {/* Social Proof */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-400 animate-slide-up delay-6">
+          <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-400 animate-slide-up delay-6">
             <div className="flex items-center gap-2">
               <Sparkles size={20} className="text-[#5E17EB]" />
               <span>The best and trusted AI content generator</span>
@@ -229,20 +235,20 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-24 px-4 bg-black relative overflow-hidden">
+      <section id="features" className="py-16 sm:py-24 px-4 bg-black relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 space-y-4 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold">
+          <div className="text-center mb-12 sm:mb-16 space-y-2 sm:space-y-4 animate-slide-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               Why Choose <span className="text-[#5E17EB]">Xommunity</span>?
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
               Everything you need to craft stunning content, powered by state-of-the-art AI
             </p>
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
               {
                 icon: Brain,
@@ -277,14 +283,14 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
             ].map((feature, idx) => (
               <div
                 key={idx}
-                className={`group p-8 bg-gradient-to-br from-purple-900/10 to-transparent border border-purple-900/20 rounded-2xl hover:border-purple-900/50 hover:bg-purple-900/20 transition cursor-pointer animate-slide-up delay-${idx + 1}`}
+                className={`group p-5 sm:p-6 lg:p-8 bg-gradient-to-br from-purple-900/10 to-transparent border border-purple-900/20 rounded-lg sm:rounded-2xl hover:border-purple-900/50 hover:bg-purple-900/20 transition cursor-pointer animate-slide-up delay-${idx + 1}`}
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className="inline-block p-3 bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] rounded-lg mb-4 group-hover:scale-110 transition">
-                  <feature.icon className="w-6 h-6 text-white" />
+                <div className="inline-block p-2 sm:p-3 bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] rounded-lg mb-3 sm:mb-4 group-hover:scale-110 transition">
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -292,13 +298,13 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-4 bg-gradient-to-b from-black to-purple-900/5">
+      <section id="how-works" className="py-16 sm:py-24 px-4 bg-gradient-to-b from-black to-purple-900/5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 animate-slide-up">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16 animate-slide-up">
             How It <span className="text-[#5E17EB]">Works</span>
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
               { step: 1, title: 'Sign Up', desc: 'Create your free account in seconds' },
               { step: 2, title: 'Choose Type', desc: 'Select your content format' },
@@ -307,11 +313,11 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
             ].map((item, idx) => (
               <div key={idx} className="relative animate-slide-up" style={{ animationDelay: `${idx * 0.15}s` }}>
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] rounded-full flex items-center justify-center text-2xl font-bold mb-4 shadow-lg shadow-purple-900/50 hover:animate-pulse-scale transition">
+                  <div className="w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] rounded-full flex items-center justify-center text-lg sm:text-2xl font-bold mb-3 sm:mb-4 shadow-lg shadow-purple-900/50 hover:animate-pulse-scale transition">
                     {item.step}
                   </div>
-                  <h3 className="text-lg font-bold text-center mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-center text-sm">{item.desc}</p>
+                  <h3 className="text-base sm:text-lg font-bold text-center mb-1 sm:mb-2">{item.title}</h3>
+                  <p className="text-gray-400 text-center text-xs sm:text-sm">{item.desc}</p>
                 </div>
                 {idx < 3 && (
                   <div className="hidden md:block absolute top-8 -right-4 w-8 h-1 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6]"></div>
@@ -323,17 +329,17 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 bg-black relative overflow-hidden">
+      <section className="py-16 sm:py-24 px-4 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#5E17EB]/10 to-[#CB6CE6]/10"></div>
-        <div className="relative max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-bold animate-slide-up">
+        <div className="relative max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold animate-slide-up leading-tight">
             Ready to Transform Your Content?
           </h2>
-          <p className="text-xl text-gray-400 animate-slide-up delay-1">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 animate-slide-up delay-1 max-w-2xl mx-auto">
             Join thousands of creators and marketers using Xommunity to scale their content production
           </p>
           <SignInButton mode="modal">
-            <button className="group px-10 py-4 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-bold text-lg rounded-xl shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-900/70 transform hover:-translate-y-1 transition inline-flex items-center gap-2 cursor-pointer animate-slide-up delay-2">
+            <button className="group px-7 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl shadow-lg shadow-purple-900/50 hover:shadow-xl hover:shadow-purple-900/70 transform hover:-translate-y-1 transition inline-flex items-center gap-2 cursor-pointer animate-slide-up delay-2">
               Start Creating Now
               <Rocket className="group-hover:translate-x-1 transition" size={20} />
             </button>
@@ -342,15 +348,15 @@ const LandingPage: React.FC<{ onGetStarted: () => void }> = ({ onGetStarted }) =
       </section>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-purple-900/20 py-8 px-4 animate-slide-up">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <footer className="bg-black border-t border-purple-900/20 py-8 sm:py-12 px-4 animate-slide-up">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
           <div className="flex items-center gap-2 hover:text-white transition">
             <div className="text-[#5E17EB]">
               <XommunityLogo />
             </div>
-            <span className="font-bold">Xommunity AI © 2026</span>
+            <span className="font-bold whitespace-nowrap">Xommunity AI © 2026</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6">
             <a href="#" className="hover:text-white transition transform hover:translate-y-[-2px]">Privacy</a>
             <a href="#" className="hover:text-white transition transform hover:translate-y-[-2px]">Terms</a>
             <a href="#" className="hover:text-white transition transform hover:translate-y-[-2px]">Contact</a>
