@@ -116,30 +116,30 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
   };
 
   return (
-    <div className="bg-black rounded-2xl shadow-xl border border-purple-900/30 p-6 md:p-8 h-full flex flex-col transition-all duration-300 text-gray-100">
+    <div className="bg-black rounded-xl sm:rounded-2xl shadow-xl border border-purple-900/30 p-4 sm:p-6 lg:p-8 h-full flex flex-col transition-all duration-300 text-gray-100 w-full overflow-hidden">
       
       {/* Header & Templates */}
-      <div className="mb-6 border-b border-purple-900/20 pb-4">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <span className="bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] p-2 rounded-lg">
-              <Sparkles className="w-5 h-5 text-white" />
+      <div className="mb-4 sm:mb-6 border-b border-purple-900/20 pb-4">
+        <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 min-w-0">
+            <span className="bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] p-1.5 sm:p-2 rounded-lg flex-shrink-0">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </span>
-            Create Content
+            <span className="truncate">Create Content</span>
           </h2>
         </div>
 
         {/* Template Manager */}
-        <div className="bg-black/60 rounded-lg p-2 flex flex-col gap-2 border border-purple-900/20">
-          <div className="flex items-center gap-2">
-            <div className="relative flex-grow">
-              <FolderOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <div className="bg-black/60 rounded-lg p-2 flex flex-col gap-2 border border-purple-900/20 w-full">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <div className="relative flex-grow min-w-0">
+              <FolderOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 flex-shrink-0" />
               <select 
-                className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-md text-sm text-gray-700 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none appearance-none"
+                className="w-full pl-9 pr-4 py-2 bg-white border border-gray-200 rounded-md text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none appearance-none"
                 value={selectedPresetId}
                 onChange={(e) => loadPreset(e.target.value)}
               >
-                <option value="">Load a template preset...</option>
+                <option value="">Load preset...</option>
                 {presets.map(p => (
                   <option key={p.id} value={p.id}>{p.name}</option>
                 ))}
@@ -149,7 +149,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
             {selectedPresetId && (
               <button 
                 onClick={(e) => deletePreset(selectedPresetId, e)}
-                className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors"
+                className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors flex-shrink-0"
                 title="Delete Template"
               >
                 <Trash2 className="w-4 h-4" />
@@ -158,23 +158,23 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
 
             <button
               onClick={() => setShowSavePreset(!showSavePreset)}
-              className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-all ${
+              className={`flex items-center gap-1.5 px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium rounded-md transition-all flex-shrink-0 ${
                 showSavePreset 
                   ? 'bg-indigo-100 text-indigo-700' 
                   : 'bg-white border border-gray-200 text-gray-600 hover:text-indigo-600 hover:border-indigo-300'
               }`}
             >
               <Bookmark className="w-4 h-4" />
-              Save
+              <span className="hidden sm:inline">Save</span>
             </button>
           </div>
 
           {showSavePreset && (
-            <div className="flex items-center gap-2 animate-fadeIn mt-1">
+            <div className="flex items-center gap-2 animate-fadeIn mt-1 w-full">
               <input 
                 type="text" 
-                placeholder="Template Name (e.g., SEO Blog Post)"
-                className="flex-grow px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                placeholder="Template Name"
+                className="flex-grow px-3 py-2 text-xs sm:text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 min-w-0"
                 value={newPresetName}
                 onChange={(e) => setNewPresetName(e.target.value)}
                 autoFocus
@@ -182,7 +182,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
               <button 
                 onClick={savePreset}
                 disabled={!newPresetName.trim()}
-                className="bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex-shrink-0"
               >
                 <Save className="w-4 h-4" />
               </button>
@@ -191,11 +191,11 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 flex-grow overflow-y-auto pr-2 custom-scrollbar">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 flex-grow overflow-y-auto pr-2 custom-scrollbar">
         {/* Topic Section */}
         <div className="space-y-2">
-          <div className="flex justify-between items-end">
-            <label className="block text-sm font-semibold text-gray-200" htmlFor="topic">
+          <div className="flex justify-between items-end gap-2 flex-wrap">
+            <label className="block text-xs sm:text-sm font-semibold text-gray-200" htmlFor="topic">
               Topic or Subject <span className="text-[#5E17EB]">*</span>
             </label>
             {formData.topic.length > 3 && (
@@ -203,10 +203,10 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
                 type="button"
                 onClick={handleGetSuggestions}
                 disabled={isSuggesting}
-                className="text-xs flex items-center gap-1 text-indigo-600 hover:text-indigo-700 font-medium transition-colors disabled:opacity-50"
+                className="text-xs flex items-center gap-1 text-indigo-600 hover:text-indigo-700 font-medium transition-colors disabled:opacity-50 flex-shrink-0"
               >
                 {isSuggesting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Wand2 className="w-3 h-3" />}
-                {isSuggesting ? 'Thinking...' : 'Get Ideas'}
+                <span className="hidden sm:inline">{isSuggesting ? 'Thinking...' : 'Get Ideas'}</span>
               </button>
             )}
           </div>
@@ -216,7 +216,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
               name="topic"
               required
               rows={2}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all resize-none shadow-sm"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all resize-none shadow-sm text-sm"
               placeholder="e.g., The benefits of meditation for mental health"
               value={formData.topic}
               onChange={handleChange}
