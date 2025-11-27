@@ -24,6 +24,9 @@ root.render(
           colorPrimary: '#4f46e5',
         },
       }}
+      signUpProps={{
+        skipPhoneValidation: true,
+      }}
     >
       <App />
     </ClerkProvider>
