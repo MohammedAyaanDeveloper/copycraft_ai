@@ -7,9 +7,10 @@ interface GeneratorFormProps {
   isLoading: boolean;
   onSubmit: (params: GenerationParams) => Promise<void>;
   initialParams?: GenerationParams | null;
+  remainingCredits?: number;
 }
 
-const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, initialParams }) => {
+const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, initialParams, remainingCredits = 0 }) => {
   const [formData, setFormData] = useState<GenerationParams>({
     topic: '',
     contentType: ContentType.BLOG_POST,
@@ -115,21 +116,21 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8 h-full flex flex-col transition-all duration-300">
+    <div className="bg-black rounded-2xl shadow-xl border border-purple-900/30 p-6 md:p-8 h-full flex flex-col transition-all duration-300 text-gray-100">
       
       {/* Header & Templates */}
-      <div className="mb-6 border-b border-gray-100 pb-4">
+      <div className="mb-6 border-b border-purple-900/20 pb-4">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-            <span className="bg-indigo-100 p-2 rounded-lg">
-              <Sparkles className="w-5 h-5 text-indigo-600" />
+          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+            <span className="bg-gradient-to-br from-[#5E17EB] to-[#CB6CE6] p-2 rounded-lg">
+              <Sparkles className="w-5 h-5 text-white" />
             </span>
             Create Content
           </h2>
         </div>
 
         {/* Template Manager */}
-        <div className="bg-slate-50 rounded-lg p-2 flex flex-col gap-2 border border-gray-200">
+        <div className="bg-black/60 rounded-lg p-2 flex flex-col gap-2 border border-purple-900/20">
           <div className="flex items-center gap-2">
             <div className="relative flex-grow">
               <FolderOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -194,8 +195,8 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
         {/* Topic Section */}
         <div className="space-y-2">
           <div className="flex justify-between items-end">
-            <label className="block text-sm font-semibold text-gray-700" htmlFor="topic">
-              Topic or Subject <span className="text-indigo-500">*</span>
+            <label className="block text-sm font-semibold text-gray-200" htmlFor="topic">
+              Topic or Subject <span className="text-[#5E17EB]">*</span>
             </label>
             {formData.topic.length > 3 && (
               <button
@@ -249,8 +250,8 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
         {/* Content Type & Tone Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-700" htmlFor="contentType">
-              Content Type <span className="text-indigo-500">*</span>
+            <label className="block text-sm font-semibold text-gray-200" htmlFor="contentType">
+              Content Type <span className="text-[#5E17EB]">*</span>
             </label>
             <div className="relative">
               <select
@@ -271,8 +272,8 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-700" htmlFor="tone">
-              Desired Tone <span className="text-indigo-500">*</span>
+            <label className="block text-sm font-semibold text-gray-200" htmlFor="tone">
+              Desired Tone <span className="text-[#5E17EB]">*</span>
             </label>
             <div className="relative">
               <select
@@ -295,8 +296,8 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
 
         {/* Target Audience */}
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-700" htmlFor="audience">
-            Target Audience <span className="text-indigo-500">*</span>
+          <label className="block text-sm font-semibold text-gray-200" htmlFor="audience">
+            Target Audience <span className="text-[#5E17EB]">*</span>
           </label>
           <input
             type="text"
@@ -342,14 +343,14 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
           />
         </div>
 
-        <div className="pt-4 sticky bottom-0 bg-white pb-1">
+        <div className="pt-4 sticky bottom-0 bg-black/80 pb-1 border-t border-purple-900/20">
           <button
             type="submit"
-            disabled={isLoading}
-            className={`w-full flex items-center justify-center py-4 px-6 rounded-xl text-white font-semibold text-lg transition-all shadow-lg shadow-indigo-200
+            disabled={isLoading || remainingCredits <= 0}
+            className={`w-full flex items-center justify-center py-4 px-6 rounded-xl text-white font-semibold text-lg transition-all shadow-lg
               ${isLoading 
-                ? 'bg-indigo-400 cursor-not-allowed' 
-                : 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 hover:shadow-indigo-300 transform hover:-translate-y-0.5 active:translate-y-0'
+                ? 'bg-[#5E17EB]/60 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-[#5E17EB] to-[#CB6CE6] hover:from-[#6a2ef0] hover:to-[#d07bf0] transform hover:-translate-y-0.5 active:translate-y-0'
               }`}
           >
             {isLoading ? (
@@ -360,7 +361,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ isLoading, onSubmit, init
             ) : (
               <>
                 <Sparkles className="mr-2 h-5 w-5" />
-                Generate Content
+                {remainingCredits > 0 ? 'Generate Content' : 'No Credits Left'}
               </>
             )}
           </button>
